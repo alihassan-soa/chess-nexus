@@ -8,6 +8,7 @@ import {
   isPromotion,
   getAIMove 
 } from '@/lib/chess/engine';
+import { useChessSounds } from '@/hooks/useChessSounds';
 import type { GameState, GameSettings, Square, Move } from '@/lib/chess/types';
 
 interface UseChessGameReturn {
@@ -49,6 +50,14 @@ export function useChessGame(initialSettings?: Partial<GameSettings>): UseChessG
   const [blackTime, setBlackTime] = useState(settings.timeControl.baseTime);
   const [isTimerRunning, setIsTimerRunning] = useState(false);
   const timerRef = useRef<NodeJS.Timeout | null>(null);
+  
+  // Sound effects
+  const { playMoveSound, setEnabled: setSoundEnabled } = useChessSounds(settings.soundEnabled);
+  
+  // Sync sound enabled state with settings
+  useEffect(() => {
+    setSoundEnabled(settings.soundEnabled);
+  }, [settings.soundEnabled, setSoundEnabled]);
 
   // Timer logic
   useEffect(() => {
@@ -73,14 +82,17 @@ export function useChessGame(initialSettings?: Partial<GameSettings>): UseChessG
         const aiMove = getAIMove(gameRef.current, settings.aiDifficulty || 'intermediate');
         if (aiMove) {
           makeMove(gameRef.current, aiMove.from, aiMove.to, aiMove.promotion as 'q' | 'r' | 'b' | 'n');
-          setGameState(getGameState(gameRef.current));
+          const newState = getGameState(gameRef.current);
+          setGameState(newState);
+          // Play sound for AI move
+          playMoveSound(aiMove, newState.isCheck, newState.isGameOver);
           // Add increment
           setBlackTime((prev) => prev + settings.timeControl.increment);
         }
       }, 500 + Math.random() * 500);
       return () => clearTimeout(timer);
     }
-  }, [gameState.turn, gameState.isGameOver, settings.mode, settings.aiDifficulty, settings.timeControl.increment]);
+  }, [gameState.turn, gameState.isGameOver, settings.mode, settings.aiDifficulty, settings.timeControl.increment, playMoveSound]);
 
   const selectSquare = useCallback((square: Square) => {
     const piece = gameRef.current.get(square);
@@ -98,16 +110,23 @@ export function useChessGame(initialSettings?: Partial<GameSettings>): UseChessG
       const to = square;
       
       // Check for promotion
+      let move;
       if (isPromotion(gameRef.current, from, to)) {
         // For simplicity, auto-promote to queen
-        makeMove(gameRef.current, from, to, 'q');
+        move = makeMove(gameRef.current, from, to, 'q');
       } else {
-        makeMove(gameRef.current, from, to);
+        move = makeMove(gameRef.current, from, to);
       }
       
-      setGameState(getGameState(gameRef.current));
+      const newState = getGameState(gameRef.current);
+      setGameState(newState);
       setSelectedSquare(null);
       setLegalMoves([]);
+      
+      // Play sound for the move
+      if (move) {
+        playMoveSound(move, newState.isCheck, newState.isGameOver);
+      }
       
       // Add increment to the player who just moved
       if (gameState.turn === 'w') {
@@ -121,16 +140,20 @@ export function useChessGame(initialSettings?: Partial<GameSettings>): UseChessG
       setSelectedSquare(null);
       setLegalMoves([]);
     }
-  }, [selectedSquare, legalMoves, gameState.turn, settings.highlightMoves, settings.timeControl.increment]);
+  }, [selectedSquare, legalMoves, gameState.turn, settings.highlightMoves, settings.timeControl.increment, playMoveSound]);
 
   const movePiece = useCallback((from: Square, to: Square): boolean => {
     const promotion = isPromotion(gameRef.current, from, to) ? 'q' : undefined;
     const move = makeMove(gameRef.current, from, to, promotion);
     
     if (move) {
-      setGameState(getGameState(gameRef.current));
+      const newState = getGameState(gameRef.current);
+      setGameState(newState);
       setSelectedSquare(null);
       setLegalMoves([]);
+      
+      // Play sound
+      playMoveSound(move, newState.isCheck, newState.isGameOver);
       
       // Add increment
       if (gameState.turn === 'w') {
@@ -141,7 +164,7 @@ export function useChessGame(initialSettings?: Partial<GameSettings>): UseChessG
       return true;
     }
     return false;
-  }, [gameState.turn, settings.timeControl.increment]);
+  }, [gameState.turn, settings.timeControl.increment, playMoveSound]);
 
   const resetGame = useCallback(() => {
     gameRef.current = createGame();
