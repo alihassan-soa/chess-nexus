@@ -92,8 +92,8 @@ chess-web-game/
 ### 1. Clone the Repository
 
 ```bash
-git clone https://github.com/your-username/chess-web-game.git
-cd chess-web-game
+git clone https://github.com/alihassan-soa/chess-nexus.git
+cd chess-nexus
 ```
 
 ### 2. Run Locally
