@@ -1,73 +1,140 @@
-# Welcome to your Lovable project
+# ♟️ Chess Web Game
 
-## Project info
+A **modern Chess Web Game** built using **VibeCoding principles with Lovable.dev**, focusing on clean UI, structured product thinking, and scalable frontend architecture.
 
-**URL**: https://lovable.dev/projects/REPLACE_WITH_PROJECT_ID
+This project demonstrates how **AI-assisted development**, combined with **strong documentation (PRD & GDD)**, can turn an idea into a production-ready web application.
 
-## How can I edit this code?
+---
 
-There are several ways of editing your application.
+## 🚀 Why This Project Matters (For Recruiters)
 
-**Use Lovable**
+✔ Shows **end-to-end product development** (idea → PRD → GDD → implementation)
+✔ Demonstrates **clear system thinking**, not just coding
+✔ Uses **modern AI-assisted workflows (VibeCoding)** responsibly
+✔ Clean repo structure and readable documentation
+✔ Easy to review, run, and extend
 
-Simply visit the [Lovable Project](https://lovable.dev/projects/REPLACE_WITH_PROJECT_ID) and start prompting.
+---
 
-Changes made via Lovable will be committed automatically to this repo.
+## 🎥 Project Overview
 
-**Use your preferred IDE**
+This chess game provides a smooth, intuitive experience for two players on the same device.
 
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
+**Key focus areas:**
 
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
+* User experience & interaction design
+* Game logic clarity
+* Maintainable, scalable code structure
+* Professional documentation standards
 
-Follow these steps:
+> 📌 A full video walkthrough of the project is shared on LinkedIn.
 
-```sh
-# Step 1: Clone the repository using the project's Git URL.
-git clone <YOUR_GIT_URL>
+---
 
-# Step 2: Navigate to the project directory.
-cd <YOUR_PROJECT_NAME>
+## 🎮 Features
 
-# Step 3: Install the necessary dependencies.
-npm i
+* ♟️ Classic 8×8 chessboard
+* 🧠 Standard chess rules enforcement
+* 🔁 Turn-based gameplay
+* ✨ Interactive piece selection & movement
+* 🔄 Game reset functionality
 
-# Step 4: Start the development server with auto-reloading and an instant preview.
-npm run dev
+---
+
+## 🧠 Product & Game Documentation
+
+This project follows a **product-first development approach**.
+
+📄 **Documentation included:**
+
+* 📌 **Product Requirements Document (PRD)** — defines scope, goals, and success metrics
+* 🎮 **Game Design Document (GDD)** — details gameplay mechanics and rules
+
+👉 Access here:
+
+* [PRD – Product Requirements Document](docs/PRD.md)
+* [GDD – Game Design Document](docs/GDD.md)
+
+---
+
+## 🛠️ Tech Stack
+
+* **Frontend:** HTML, CSS, JavaScript *(or framework if applicable)*
+* **Architecture:** Modular, component-based design
+* **Tooling:** Lovable.dev (VibeCoding workflow)
+* **Version Control:** Git & GitHub
+
+---
+
+## 📂 Project Structure
+
+```
+chess-web-game/
+│
+├── docs/
+│   ├── PRD.md
+│   └── GDD.md
+│
+├── src/
+│   ├── components/
+│   ├── game-logic/
+│   └── ui/
+│
+├── public/
+├── README.md
+└── LICENSE
 ```
 
-**Edit a file directly in GitHub**
+---
 
-- Navigate to the desired file(s).
-- Click the "Edit" button (pencil icon) at the top right of the file view.
-- Make your changes and commit the changes.
+## ⚙️ Getting Started
 
-**Use GitHub Codespaces**
+### 1. Clone the Repository
 
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
-- Edit files directly within the Codespace and commit and push your changes once you're done.
+```bash
+git clone https://github.com/your-username/chess-web-game.git
+cd chess-web-game
+```
 
-## What technologies are used for this project?
+### 2. Run Locally
 
-This project is built with:
+Open `index.html` in your browser *(or run via a local server if required)*.
 
-- Vite
-- TypeScript
-- React
-- shadcn-ui
-- Tailwind CSS
+---
 
-## How can I deploy this project?
+## 🔮 Future Enhancements
 
-Simply open [Lovable](https://lovable.dev/projects/REPLACE_WITH_PROJECT_ID) and click on Share -> Publish.
+* 🤖 AI opponent
+* 🌐 Online multiplayer
+* ⏱️ Timers & ranking system
+* 📱 Mobile responsiveness improvements
 
-## Can I connect a custom domain to my Lovable project?
+---
 
-Yes, you can!
+## 👨‍💻 Author
 
-To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
+**Ali Hassan**
+Web Developer | Game Dev Enthusiast | AI-Assisted Development Explorer
 
-Read more here: [Setting up a custom domain](https://docs.lovable.dev/features/custom-domain#custom-domain)
+* LinkedIn: *(add your LinkedIn profile link)*
+* GitHub: *(this repository)*
+
+---
+
+## 🤝 Feedback & Contributions
+
+Feedback, suggestions, and contributions are welcome.
+
+If you're interested in:
+
+* Game development
+* Web architecture
+* AI-assisted workflows
+
+Let’s connect and build 🚀
+
+---
+
+## ⭐ If You Like This Project
+
+Please consider starring ⭐ the repository — it helps others discover the project and supports my work.
