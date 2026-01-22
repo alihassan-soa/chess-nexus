@@ -3,6 +3,7 @@ import { motion } from 'framer-motion';
 import { Button } from '@/components/ui/button';
 import { GameSetup } from '@/components/chess/GameSetup';
 import { GameScreen } from '@/components/chess/GameScreen';
+import { UserMenu } from '@/components/UserMenu';
 import type { GameSettings } from '@/lib/chess/types';
 import heroBg from '@/assets/hero-bg.jpg';
 import { 
@@ -41,8 +42,19 @@ const Index = () => {
 
   return (
     <div className="min-h-screen bg-background overflow-hidden">
+      {/* Top Navigation */}
+      <nav className="fixed top-0 left-0 right-0 z-50 bg-background/80 backdrop-blur-md border-b border-border/50">
+        <div className="container mx-auto px-4 h-16 flex items-center justify-between">
+          <div className="flex items-center gap-2">
+            <span className="text-2xl">♔</span>
+            <span className="font-display font-bold text-lg">Chess Nexus</span>
+          </div>
+          <UserMenu />
+        </div>
+      </nav>
+
       {/* Hero Section */}
-      <section className="relative min-h-screen flex items-center justify-center">
+      <section className="relative min-h-screen flex items-center justify-center pt-16">
         {/* Background image */}
         <div 
           className="absolute inset-0 bg-cover bg-center bg-no-repeat"
@@ -67,7 +79,7 @@ const Index = () => {
             >
               <div className="inline-flex items-center gap-3 bg-card/50 backdrop-blur-md px-6 py-3 rounded-full border border-border/50">
                 <span className="text-4xl">♔</span>
-                <span className="text-2xl font-display font-bold">ChessMaster</span>
+                <span className="text-2xl font-display font-bold">Chess Nexus</span>
               </div>
             </motion.div>
 
@@ -156,7 +168,7 @@ const Index = () => {
             viewport={{ once: true }}
           >
             <h2 className="text-4xl font-display font-bold mb-4">
-              Why ChessMaster?
+              Why Chess Nexus?
             </h2>
             <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
               Experience chess like never before with cutting-edge features 
@@ -249,10 +261,10 @@ const Index = () => {
         <div className="container mx-auto max-w-6xl flex flex-col md:flex-row items-center justify-between gap-4">
           <div className="flex items-center gap-2">
             <span className="text-2xl">♔</span>
-            <span className="font-display font-semibold">ChessMaster</span>
+            <span className="font-display font-semibold">Chess Nexus</span>
           </div>
           <p className="text-sm text-muted-foreground">
-            © 2026 ChessMaster. All rights reserved.
+            © 2026 Chess Nexus. All rights reserved.
           </p>
         </div>
       </footer>
